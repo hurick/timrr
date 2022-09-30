@@ -2,8 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALWSURBVHgB7Zpba9RAFMf/uXTbrpddy4q0gi++FMQP4Tf2E9SH+ib6ooU+KMWClNKA1kvR7mbjnNEMyTaTizkzWZn5wVJKDpM9/zmX2ZMEOzuzDA4TwnG8AHAcLwAcxwsAx/ECwHG8AHAcLwAcxwsAx3FegBj/Gdl4E+nuFMvJWH62XhyhD2svQMnh3XvINiJ1LTpN0Je1E0A6PLuN5eyu+NyR/+uIzj6jL4MLkG3EYocnrRxeJUy+oS/WBVAOT26JkJ52crhImHxFME/RF+MCkMNLEdIp7XAPh1fh2H2CXYCSwxTSoniZIFo3AVLh7GL/oXTaNMHVL7YIYDsI0Y7QF7MBl/MEawqM3pzgWhSm9PEDdKVUHPemiN+fI/5wXmkbiQLIBXsNGL09xUKIMN/fq7Ur1Yr7N2tFXY6vbQSoRY8/yb9FEZocLkKpFFxeVV4LL3+I69dg+64wRCTClwrjz2dPkE3HnYpjeKHf4SD5Dk7YBJA7PNlWJ7rc4ZDSoWNnqDvixgzH39J66Mn8b+ujkC7+UFE3oHRYLDB/+qjtktocp5MfZ/7Le6EnochXKUCF8zlU0UevT9BqvQv9ETdkrP5qTfSEfpJuvjxuPJeTXRsRorMvNdd4w59gOQhRWLYVYevgqNbOVvtTa4IJaltShIbToLQ7rBbLZvtT64KRTiIcvLthZ7P9qXuCGdqlViKQ3WHZzmb7yzEyFf5XEUJN+JtofznGxuJdRYg+JtocN9H+1NowiHROjK11ha1ot/38lVasyFD4E8YfjFD4ykhoECGm84RGLFPhL9eGBXIRdHP8PMerxJKt0UD7y7H2aIyco4FJlQjFHCc7etqT25ncfcL6WLxqalSV49IOf1LDJIM8GFmdGul2mUQwzWBPhvKpEc0BTeZ4E8HQr8tn49GgAgz+fsCQzhP+DRE4jhcAjuMFgON4AeA4XgA4jhcAjuMFgOM4L8BvIFRrY//ti5oAAAAASUVORK5CYII=" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAALWSURBVHgB7Zpba9RAFMf/uXTbrpddy4q0gi++FMQP4Tf2E9SH+ib6ooU+KMWClNKA1kvR7mbjnNEMyTaTizkzWZn5wVJKDpM9/zmX2ZMEOzuzDA4TwnG8AHAcLwAcxwsAx/ECwHG8AHAcLwAcxwsAx3FegBj/Gdl4E+nuFMvJWH62XhyhD2svQMnh3XvINiJ1LTpN0Je1E0A6PLuN5eyu+NyR/+uIzj6jL4MLkG3EYocnrRxeJUy+oS/WBVAOT26JkJ52crhImHxFME/RF+MCkMNLEdIp7XAPh1fh2H2CXYCSwxTSoniZIFo3AVLh7GL/oXTaNMHVL7YIYDsI0Y7QF7MBl/MEawqM3pzgWhSm9PEDdKVUHPemiN+fI/5wXmkbiQLIBXsNGL09xUKIMN/fq7Ur1Yr7N2tFXY6vbQSoRY8/yb9FEZocLkKpFFxeVV4LL3+I69dg+64wRCTClwrjz2dPkE3HnYpjeKHf4SD5Dk7YBJA7PNlWJ7rc4ZDSoWNnqDvixgzH39J66Mn8b+ujkC7+UFE3oHRYLDB/+qjtktocp5MfZ/7Le6EnochXKUCF8zlU0UevT9BqvQv9ETdkrP5qTfSEfpJuvjxuPJeTXRsRorMvNdd4w59gOQhRWLYVYevgqNbOVvtTa4IJaltShIbToLQ7rBbLZvtT64KRTiIcvLthZ7P9qXuCGdqlViKQ3WHZzmb7yzEyFf5XEUJN+JtofznGxuJdRYg+JtocN9H+1NowiHROjK11ha1ot/38lVasyFD4E8YfjFD4ykhoECGm84RGLFPhL9eGBXIRdHP8PMerxJKt0UD7y7H2aIyco4FJlQjFHCc7etqT25ncfcL6WLxqalSV49IOf1LDJIM8GFmdGul2mUQwzWBPhvKpEc0BTeZ4E8HQr8tn49GgAgz+fsCQzhP+DRE4jhcAjuMFgON4AeA4XgA4jhcAjuMFgOM4L8BvIFRrY//ti5oAAAAASUVORK5CYII=" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
     <title>Timrr</title>
   </head>
   <body>

@@ -1,5 +1,5 @@
 import 'styled-components'
-import { lightTheme, darkTheme } from '../styles/themes'
+import { darkTheme } from '../styles/themes'
 
 type ThemeType = typeof darkTheme
 

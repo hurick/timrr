@@ -32,4 +32,18 @@ export const GlobalStyles = createGlobalStyle`
     border: 0;
     outline: 0;
   }
+
+  input[type="text"]::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 `

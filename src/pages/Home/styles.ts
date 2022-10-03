@@ -25,27 +25,41 @@ export const FormContent = styled.fieldset`
   align-items: flex-start;
   gap: .75rem;
 
+  width: 100%;
+
   font-size: 1.125rem;
   font-weight: 700;
   color: ${props => props.theme['gray-100']};
+`
 
-  .fc__input {
-    padding: 0 .75rem .5rem;
-    background-color: transparent;
-    border: 0;
-    border-bottom: 1px solid ${props => props.theme['gray-500']};
+export const BaseInput = styled.input`
+  display: flex;
+  flex: 1;
 
-    color: ${props => props.theme['gray-100']};
+  padding: .15rem .75rem .5rem;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid ${props => props.theme['gray-500']};
 
-    &::placeholder {
-      color: ${props => props.theme['gray-500']};
-    }
+  color: ${props => props.theme['gray-100']};
+  text-align: center;
 
-    &.minutes {
-      max-width: 3.5rem;
-      text-align: center;
-    }
+  transition-property: border-color;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+
+  &::placeholder {
+    color: ${props => props.theme['gray-500']};
   }
+
+  &:focus {
+    border-color: ${props => props.theme['green-500']};
+  }
+`
+
+export const MinutesInput = styled(BaseInput)`
+  flex-grow: initial;
+  width: 3rem;
 `
 
 export const FormTimer = styled.div`
@@ -84,6 +98,7 @@ export const FormSendButton = styled.button`
   padding: 1.25rem 1rem;
 
   color: ${props => props.theme['gray-100']};
+  font-weight: 700;
 
   transition-property: background-color;
   transition-duration: .2s;
@@ -94,7 +109,7 @@ export const FormSendButton = styled.button`
   }
 
   &:disabled {
-    opacity: .6;
+    opacity: .7;
     cursor: not-allowed;
   }
 `

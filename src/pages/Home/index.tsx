@@ -1,6 +1,14 @@
 import { Play } from 'phosphor-react'
 
-import { HomeContainer, FormContainer, FormContent, FormTimer, FormSendButton } from './styles'
+import {
+  HomeContainer,
+  FormContainer,
+  FormContent,
+  BaseInput,
+  MinutesInput,
+  FormTimer,
+  FormSendButton
+} from './styles'
 
 export const Home = () => {
   return (
@@ -8,10 +16,16 @@ export const Home = () => {
       <FormContainer>
         <FormContent>
           <label htmlFor="task">I&apos;ll work on</label>
-          <input type="text" id="task" placeholder="Give a name for you task" className="fc__input task" />
+          <BaseInput type="text" list="task-list-suggestions" id="task" placeholder="Finish my new resume" />
+
+          <datalist id="task-list-suggestions">
+            <option value="Option 1" />
+            <option value="Option 2" />
+            <option value="Option 3" />
+          </datalist>
 
           <label htmlFor="timeAmount">for</label>
-          <input type="text" id="timeAmount" maxLength={3} placeholder="00" className="fc__input minutes" />
+          <MinutesInput type="number" id="timeAmount" placeholder="15" min={5} max={60} step={5} />
 
           <span>minutes.</span>
         </FormContent>

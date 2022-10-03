@@ -26,4 +26,10 @@ export const GlobalStyles = createGlobalStyle`
   fieldset {
     border: 0;
   }
+
+  button {
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+  }
 `

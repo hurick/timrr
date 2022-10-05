@@ -57,8 +57,10 @@ export const Home = () => {
         <FormContent>
           <label htmlFor="task">I&apos;ll work on</label>
           <BaseInput
+            autoFocus
             id="task"
             type="text"
+            tabIndex={1}
             list="task-list-suggestions"
             placeholder="Finish my new resume"
             {...register('task')}
@@ -72,11 +74,12 @@ export const Home = () => {
 
           <label htmlFor="timeAmount">for</label>
           <MinutesInput
+            min={5}
+            max={60}
+            tabIndex={2}
             type="number"
             id="timeAmount"
             placeholder="15"
-            min={5}
-            max={60}
             {...register('timeAmount', { valueAsNumber: true })}
           />
 

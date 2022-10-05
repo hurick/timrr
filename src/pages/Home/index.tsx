@@ -1,3 +1,8 @@
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+import { newCycleFormValidationSchema } from './validator'
+
 import { Play } from 'phosphor-react'
 
 import {
@@ -11,12 +16,28 @@ import {
 } from './styles'
 
 export const Home = () => {
+  const { register, handleSubmit, watch } = useForm({
+    resolver: zodResolver(newCycleFormValidationSchema)
+  })
+
+  const handleCreateCycle = (data) => {
+    console.log('data', data)
+  }
+
+  const isSubmitDisabled = !watch('task') || !watch('timeAmount')
+
   return (
     <HomeContainer>
       <FormContainer>
-        <FormContent>
+        <FormContent onSubmit={handleSubmit(handleCreateCycle)}>
           <label htmlFor="task">I&apos;ll work on</label>
-          <BaseInput type="text" list="task-list-suggestions" id="task" placeholder="Finish my new resume" />
+          <BaseInput
+            id="task"
+            type="text"
+            list="task-list-suggestions"
+            placeholder="Finish my new resume"
+            {...register('task')}
+          />
 
           <datalist id="task-list-suggestions">
             <option value="Option 1" />
@@ -25,7 +46,15 @@ export const Home = () => {
           </datalist>
 
           <label htmlFor="timeAmount">for</label>
-          <MinutesInput type="number" id="timeAmount" placeholder="15" min={5} max={60} step={5} />
+          <MinutesInput
+            type="number"
+            id="timeAmount"
+            placeholder="15"
+            min={5}
+            max={60}
+            step={5}
+            {...register('timeAmount', { valueAsNumber: true })}
+          />
 
           <span>minutes.</span>
         </FormContent>
@@ -38,7 +67,7 @@ export const Home = () => {
           <span className="ft__number">0</span>
         </FormTimer>
 
-        <FormSendButton type="submit" title="Start your Timrr">
+        <FormSendButton type="submit" title="Start your Timrr" disabled={isSubmitDisabled}>
           <Play size={24} />
           <span>Start</span>
         </FormSendButton>

@@ -9,3 +9,5 @@ export const newCycleFormValidationSchema = zod.object({
     .min(5, 'The cycle should have at least 5 minutes')
     .max(60, 'The cycle shouldn\'t have more than 60 minutes')
 })
+
+export type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>

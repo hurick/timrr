@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { newCycleFormValidationSchema } from './validator'
+import { newCycleFormValidationSchema, NewCycleFormData } from './validator'
 
 import { Play } from 'phosphor-react'
 
@@ -16,11 +16,15 @@ import {
 } from './styles'
 
 export const Home = () => {
-  const { register, handleSubmit, watch } = useForm({
-    resolver: zodResolver(newCycleFormValidationSchema)
+  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: '',
+      timeAmount: 0
+    }
   })
 
-  const handleCreateCycle = (data) => {
+  const handleCreateCycle = (data: NewCycleFormData) => {
     console.log('data', data)
   }
 

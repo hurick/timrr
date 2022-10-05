@@ -20,7 +20,11 @@ export const FormContainer = styled.form`
   gap: 3.75rem;
 `
 
-export const FormContent = styled.fieldset`
+interface FormContentProps {
+  activeCycle: boolean
+}
+
+export const FormContent = styled.fieldset<FormContentProps>`
   display: flex;
   align-items: flex-start;
   gap: .75rem;
@@ -30,6 +34,8 @@ export const FormContent = styled.fieldset`
   font-size: 1.125rem;
   font-weight: 700;
   color: ${props => props.theme['gray-100']};
+
+  opacity: ${props => props.activeCycle ? .4 : 1};
 `
 
 export const BaseInput = styled.input`
@@ -85,7 +91,7 @@ export const FormTimer = styled.div`
   }
 `
 
-export const FormSendButton = styled.button`
+const BaseFormButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +99,6 @@ export const FormSendButton = styled.button`
 
   width: 100%;
 
-  background-color: ${props => props.theme['green-500']};
   border-radius: 8px;
   padding: 1.25rem 1rem;
 
@@ -104,12 +109,23 @@ export const FormSendButton = styled.button`
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
 
-  &:not(:disabled):hover {
-    background-color: ${props => props.theme['green-700']};
-  }
-
   &:disabled {
     opacity: .7;
     cursor: not-allowed;
+  }
+`
+export const FormSendButton = styled(BaseFormButton)`
+  background-color: ${props => props.theme['green-500']};
+
+  &:not(:disabled):hover {
+    background-color: ${props => props.theme['green-700']};
+  }
+`
+
+export const FormStopButton = styled(BaseFormButton)`
+  background-color: ${props => props.theme['red-500']};
+
+  &:not(:disabled):hover {
+    background-color: ${props => props.theme['red-700']};
   }
 `

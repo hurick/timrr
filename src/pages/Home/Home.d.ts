@@ -3,4 +3,5 @@ export interface Cycle {
   task: string
   timeAmount: number
   startDate: Date
+  stoppedDate?: Date
 }

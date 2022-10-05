@@ -21,13 +21,10 @@ import {
 export const Home = () => {
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState<number>(0)
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
-    resolver: zodResolver(newCycleFormValidationSchema),
-    defaultValues: {
-      task: '',
-      timeAmount: 0
-    }
+    resolver: zodResolver(newCycleFormValidationSchema)
   })
 
   const handleCreateCycle = (data: NewCycleFormData) => {
@@ -47,6 +44,12 @@ export const Home = () => {
 
   const isSubmitDisabled = !watch('task') || !watch('timeAmount')
   const activeCycle = cycles.find(cycle => cycle.id === activeCycleId)
+
+  const totalSeconds = activeCycle ? activeCycle.timeAmount * 60 : 0
+  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
+
+  const timeAmountMinutes = String(Math.floor(currentSeconds / 60)).padStart(2, '0')
+  const timeAmountSeconds = String(currentSeconds % 60).padStart(2, '0')
 
   return (
     <HomeContainer>
@@ -74,7 +77,6 @@ export const Home = () => {
             placeholder="15"
             min={5}
             max={60}
-            step={5}
             {...register('timeAmount', { valueAsNumber: true })}
           />
 
@@ -82,11 +84,11 @@ export const Home = () => {
         </FormContent>
 
         <FormTimer>
-          <span className="ft__number">0</span>
-          <span className="ft__number">0</span>
+          <span className="ft__number">{timeAmountMinutes[0]}</span>
+          <span className="ft__number">{timeAmountMinutes[1]}</span>
           <span className="ft__separator">:</span>
-          <span className="ft__number">0</span>
-          <span className="ft__number">0</span>
+          <span className="ft__number">{timeAmountSeconds[0]}</span>
+          <span className="ft__number">{timeAmountSeconds[1]}</span>
         </FormTimer>
 
         <FormSendButton type="submit" title="Start your Timrr" disabled={isSubmitDisabled}>

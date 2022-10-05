@@ -4,4 +4,5 @@ export interface Cycle {
   timeAmount: number
   startDate: Date
   stoppedDate?: Date
+  finishDate?: Date
 }

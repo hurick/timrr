@@ -16,7 +16,7 @@ import {
 } from './styles'
 
 export const Home = () => {
-  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
     defaultValues: {
       task: '',
@@ -26,6 +26,7 @@ export const Home = () => {
 
   const handleCreateCycle = (data: NewCycleFormData) => {
     console.log('data', data)
+    reset()
   }
 
   const isSubmitDisabled = !watch('task') || !watch('timeAmount')

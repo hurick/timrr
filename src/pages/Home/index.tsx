@@ -66,11 +66,13 @@ export const Home = () => {
             {...register('task')}
           />
 
-          <datalist id="task-list-suggestions">
-            <option value="Option 1" />
-            <option value="Option 2" />
-            <option value="Option 3" />
-          </datalist>
+          {cycles.length > 0 && (
+            <datalist id="task-list-suggestions">
+              {cycles[0] && <option value={cycles[0].task} />}
+              {cycles[1] && <option value={cycles[1].task} />}
+              {cycles[2] && <option value={cycles[2].task} />}
+            </datalist>
+          )}
 
           <label htmlFor="timeAmount">for</label>
           <MinutesInput

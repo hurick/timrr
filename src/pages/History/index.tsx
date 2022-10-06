@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { CyclesContext } from '../../contexts/CyclesContext'
 
+import { formatDistanceToNow } from 'date-fns'
+
 import {
   HistoryContainer,
   TableBody,
@@ -23,19 +25,21 @@ export const History = () => {
             <tr className="th__row">
               <th className="thr__item">Task</th>
               <th className="thr__item">Duration</th>
-              <th className="thr__item">Start</th>
+              <th className="thr__item">Started</th>
               <th className="thr__item">Status</th>
             </tr>
           </TableHeader>
 
           <TableBody>
-            {[1, 2, 3, 4, 5].map(item => (
-              <tr className="tb__row" key={item}>
-                <td className="tbr__item">Task name</td>
-                <td className="tbr__item">25 minutes</td>
-                <td className="tbr__item">2 months ago</td>
+            {cycles.map(cycle => (
+              <tr className="tb__row" key={cycle.id}>
+                <td className="tbr__item">{cycle.task}</td>
+                <td className="tbr__item">{cycle.timeAmount} minutes</td>
+                <td className="tbr__item">{formatDistanceToNow(cycle.startDate, { addSuffix: true })}</td>
                 <td className="tbr__item">
-                  <TableStatus statusColor='yellow'>In progress</TableStatus>
+                  { cycle.finishDate && <TableStatus statusColor='green'>Completed</TableStatus> }
+                  { cycle.stoppedDate && <TableStatus statusColor='red'>Stopped</TableStatus> }
+                  { !cycle.finishDate && !cycle.stoppedDate && <TableStatus statusColor='yellow'>In Progress</TableStatus> }
                 </td>
               </tr>
             ))}

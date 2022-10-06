@@ -1,18 +1,27 @@
-import { createContext, useState } from 'react'
+import { createContext, useReducer, useState } from 'react'
 import {
   Cycle,
   CyclesContextData,
   CyclesContextProviderProps,
+  CycleStates,
   NewCycleFormData
 } from '../interfaces/Cycles'
+
+import { createNewCycleAction, finishCurrentCycleAction, stopCurrentCycleAction } from '../reducers/cycles/actions'
+
+import { cyclesReducer } from '../reducers/cycles/reducer'
 
 export const CyclesContext = createContext({} as CyclesContextData)
 
 export const CyclesContextProvider = ({ children }: CyclesContextProviderProps) => {
-  const [cycles, setCycles] = useState<Cycle[]>([])
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [cycleStates, dispatch] = useReducer(cyclesReducer, {
+    cycles: [],
+    activeCycleId: null
+  })
+
   const [amountSecondsPassed, setAmountSecondsPassed] = useState<number>(0)
 
+  const { cycles, activeCycleId }: CycleStates = cycleStates
   const activeCycle = cycles.find(cycle => cycle.id === activeCycleId)
 
   const createNewCycle = (data: NewCycleFormData) => {
@@ -25,32 +34,17 @@ export const CyclesContextProvider = ({ children }: CyclesContextProviderProps) 
       startDate: new Date()
     }
 
-    setCycles(state => [newCycle, ...state])
-    setActiveCycleId(id)
+    dispatch(createNewCycleAction(newCycle))
     setAmountSecondsPassed(0)
   }
 
   const stopCurrentCycle = () => {
-    setCycles(state => state.map(cycle => {
-      if (cycle.id !== activeCycle?.id) {
-        return cycle
-      } else {
-        return { ...cycle, stoppedDate: new Date() }
-      }
-    }))
-
-    setActiveCycleId(null)
+    dispatch(stopCurrentCycleAction())
     document.title = 'Timrr'
   }
 
-  const setCycleFinished = () => {
-    setCycles(state => state.map(cycle => {
-      if (cycle.id !== activeCycle?.id) {
-        return cycle
-      } else {
-        return { ...cycle, finishDate: new Date() }
-      }
-    }))
+  const finishCurrentCycle = () => {
+    dispatch(finishCurrentCycleAction())
   }
 
   const setSecondsPassed = (seconds: number) => {
@@ -67,7 +61,7 @@ export const CyclesContextProvider = ({ children }: CyclesContextProviderProps) 
         createNewCycle,
         stopCurrentCycle,
         setSecondsPassed,
-        setCycleFinished
+        finishCurrentCycle
       }}>
       { children }
     </CyclesContext.Provider>

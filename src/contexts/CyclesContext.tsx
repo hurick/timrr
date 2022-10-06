@@ -40,7 +40,7 @@ export const CyclesContextProvider = ({ children }: CyclesContextProviderProps) 
     }))
 
     setActiveCycleId(null)
-    // reset()
+    document.title = 'Timrr'
   }
 
   const setCycleFinished = () => {

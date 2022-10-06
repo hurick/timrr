@@ -6,3 +6,10 @@ export interface Cycle {
   stoppedDate?: Date
   finishDate?: Date
 }
+
+export interface HomeContextData {
+  activeCycle: Cycle | undefined
+  amountSecondsPassed: number
+  setSecondsPassed: (seconds: number) => void
+  setCurrentCycleAsFinished: () => void
+}

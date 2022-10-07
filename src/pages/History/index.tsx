@@ -35,7 +35,7 @@ export const History = () => {
               <tr className="tb__row" key={cycle.id}>
                 <td className="tbr__item">{cycle.task}</td>
                 <td className="tbr__item">{cycle.timeAmount} minutes</td>
-                <td className="tbr__item">{formatDistanceToNow(cycle.startDate, { addSuffix: true })}</td>
+                <td className="tbr__item">{formatDistanceToNow(new Date(cycle.startDate), { addSuffix: true })}</td>
                 <td className="tbr__item">
                   { cycle.finishDate && <TableStatus statusColor='green'>Completed</TableStatus> }
                   { cycle.stoppedDate && <TableStatus statusColor='red'>Stopped</TableStatus> }

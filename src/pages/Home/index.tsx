@@ -14,18 +14,22 @@ import { newCycleFormValidationSchema, NewCycleFormData } from './validator'
 import { HomeContainer, FormContainer, FormSendButton, FormStopButton } from './styles'
 
 export const Home = () => {
-  const { activeCycleId, createNewCycle, stopCurrentCycle } = useContext(CyclesContext)
+  const { activeCycle, activeCycleId, createNewCycle, stopCurrentCycle } = useContext(CyclesContext)
 
   const newCycleForm = useForm<NewCycleFormData>({
-    resolver: zodResolver(newCycleFormValidationSchema)
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: activeCycle?.task ?? '',
+      timeAmount: activeCycle?.timeAmount ?? undefined
+    }
   })
 
   const { handleSubmit, watch, reset } = newCycleForm
   const isSubmitDisabled = !watch('task') || !watch('timeAmount')
 
   const handleStopCurrentCycle = () => {
-    stopCurrentCycle()
     reset()
+    stopCurrentCycle()
   }
 
   return (

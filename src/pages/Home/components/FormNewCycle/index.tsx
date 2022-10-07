@@ -16,6 +16,7 @@ export const FormNewCycle = () => {
         id="task"
         type="text"
         tabIndex={1}
+        defaultValue=""
         disabled={!!activeCycle}
         placeholder="Finish my new resume"
         {...register('task')}
@@ -30,6 +31,7 @@ export const FormNewCycle = () => {
         id="timeAmount"
         placeholder="15"
         disabled={!!activeCycle}
+        defaultValue={undefined}
         {...register('timeAmount', { valueAsNumber: true })}
       />
 

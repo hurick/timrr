@@ -24,6 +24,11 @@ export const CyclesContextProvider = ({ children }: CyclesContextProviderProps) 
     if (storedStateAsJSON) {
       return JSON.parse(storedStateAsJSON)
     }
+
+    return {
+      cycles: [],
+      activeCycleId: null
+    }
   })
 
   const { cycles, activeCycleId }: CycleStates = cycleStates

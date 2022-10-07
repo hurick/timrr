@@ -11,7 +11,7 @@ export const cyclesReducer = (state: CycleStates, action: any) => {
   switch(action.type) {
     case ActionTypes.ADD_NEW_CYCLE: {
       return produce(state, draft => {
-        draft.cycles.push(action.payload.newCycle)
+        draft.cycles.unshift(action.payload.newCycle)
         draft.activeCycleId = action.payload.newCycle.id
       })
     }

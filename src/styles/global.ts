@@ -58,5 +58,10 @@ export const GlobalStyles = createGlobalStyle`
 
   @media screen and (max-width: 768px) {
     html { font-size: 14px; }
+
+    .root {
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
   }
 `

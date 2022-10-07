@@ -21,4 +21,17 @@ export const FormTimer = styled.div`
   .ft__separator {
     color: ${props => props.theme['green-500']};
   }
+
+  @media screen and (max-width: 860px) {
+    flex-wrap: wrap;
+
+    .ft__number {
+      width: calc(50% - 1rem);
+      text-align: center;
+    }
+
+    .ft__separator {
+      display: none;
+    }
+  }
 `

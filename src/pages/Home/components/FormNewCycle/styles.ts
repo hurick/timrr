@@ -16,6 +16,10 @@ export const FormContent = styled.fieldset<FormContentProps>`
   color: ${props => props.theme['gray-100']};
 
   opacity: ${props => props.activeCycle ? .4 : 1};
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `
 
 export const BaseInput = styled.input`

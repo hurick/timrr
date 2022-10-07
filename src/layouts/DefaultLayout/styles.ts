@@ -16,5 +16,6 @@ export const LayoutContainer = styled.section`
   @media screen and (max-width: 1120px) {
     margin: 1rem auto;
     width: calc(100% - 2rem);
+    height: auto;
   }
 `

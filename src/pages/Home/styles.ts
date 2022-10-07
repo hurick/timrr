@@ -4,7 +4,6 @@ export const HomeContainer = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
 
   max-width: 700px;
   width: 100%;
@@ -18,6 +17,8 @@ export const FormContainer = styled.form`
   justify-content: flex-start;
   align-items: center;
   gap: 3.75rem;
+
+  width: 100%;
 `
 
 const BaseFormButton = styled.button`

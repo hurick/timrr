@@ -11,6 +11,8 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body, html, .root { height: 100%; }
+
   body {
     background-color: ${props => props.theme['gray-900']};
     color: ${props => props.theme['gray-300']};
@@ -45,5 +47,16 @@ export const GlobalStyles = createGlobalStyle`
 
   input[type="number"] {
     -moz-appearance: textfield;
+  }
+
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    html { font-size: 14px; }
   }
 `

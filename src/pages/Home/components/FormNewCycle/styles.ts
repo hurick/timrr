@@ -17,9 +17,7 @@ export const FormContent = styled.fieldset<FormContentProps>`
 
   opacity: ${props => props.activeCycle ? .4 : 1};
 
-  @media screen and (max-width: 768px) {
-    flex-wrap: wrap;
-  }
+  @media screen and (max-width: 768px) { flex-wrap: wrap; }
 `
 
 export const BaseInput = styled.input`

@@ -25,13 +25,11 @@ export const FormTimer = styled.div`
   @media screen and (max-width: 860px) {
     flex-wrap: wrap;
 
-    .ft__number {
-      width: calc(50% - 1rem);
-      text-align: center;
-    }
+    .ft__separator { display: none; }
 
-    .ft__separator {
-      display: none;
+    .ft__number {
+      width: calc(50% - .5rem);
+      text-align: center;
     }
   }
 `

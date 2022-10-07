@@ -61,6 +61,12 @@ export const TableBody = styled.tbody`
     }
     &:last-child { padding-right: 1.5rem; }
   }
+
+  @media screen and (max-width: 768px) {
+    .tbr__item:first-child {
+      width: 30%;
+    }
+  }
 `
 
 const STATUS_COLOR = {

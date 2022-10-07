@@ -62,6 +62,8 @@ export const GlobalStyles = createGlobalStyle`
     .root {
       justify-content: flex-start;
       align-items: flex-start;
+
+      height: fit-content;
     }
   }
 `

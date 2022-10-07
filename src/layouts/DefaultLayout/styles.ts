@@ -23,4 +23,8 @@ export const LayoutContainer = styled.section`
   @media screen and (max-width: 860px) {
     height: auto;
   }
+
+  @media screen and (max-width: 768px) {
+    margin: 1rem;
+  }
 `
